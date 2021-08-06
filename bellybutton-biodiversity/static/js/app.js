@@ -1,9 +1,7 @@
 const data_loc = '../samples.json';
-
-
-function optionChanged() {
-
-}
+var select = d3.select('#selDataset')
+var sample_panel = d3.select('#sample-metadata')
+console.log(sample_panel)
 
 function init() {
 
@@ -12,10 +10,18 @@ function init() {
         console.log(data)
 
         for(index in data.samples) {
-            console.log(data.samples[index].id)
-            select = d3.select('#selDataset')
+            //console.log(data.samples[index].id)
             select.append('option').text(data.samples[index].id)
         }
+
+        sample_panel.append('h4').text('ID: ' + data.metadata[0].id)
+        sample_panel.append('h4').text('Ethnicity: ' + data.metadata[0].ethnicity)
+        sample_panel.append('h4').text('Gender: ' + data.metadata[0].gender)
+        sample_panel.append('h4').text('Age: ' + data.metadata[0].age)
+        sample_panel.append('h4').text('Location: ' + data.metadata[0].location)
+
+
+
 
 
     })
