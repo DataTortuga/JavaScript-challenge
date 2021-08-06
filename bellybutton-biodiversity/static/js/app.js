@@ -12,9 +12,9 @@ function init() {
         console.log(data)
 
         for(index in data.samples) {
-            console.log(index)
+            console.log(data.samples[index].id)
             select = d3.select('#selDataset')
-            select.append('option').text(index)
+            select.append('option').text(data.samples[index].id)
             //select.options[select.options.length] = new Option(data.samples['id'][index], index);
         }
 
