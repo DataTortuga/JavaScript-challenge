@@ -1,7 +1,7 @@
 const data_loc = '../samples.json';
 var select = d3.select('#selDataset')
 
-// Function updates Demographic info panel
+// Function updates Demographic info panel when subject id is changed
 function update_panel(index, data) {
 
     var sample_panel = d3.select('#sample-metadata')
@@ -13,7 +13,12 @@ function update_panel(index, data) {
     panel_list.append('li').text('Ethnicity: ' + data.metadata[index].ethnicity);
     panel_list.append('li').text('Gender: ' + data.metadata[index].gender);
     panel_list.append('li').text('Age: ' + data.metadata[index].age);
-    panel_list  .append('li').text('Location: ' + data.metadata[index].location);
+    panel_list.append('li').text('Location: ' + data.metadata[index].location);
+}
+
+// Function updates plotly graph when subject id is changed
+function update_plot() {
+
 }
 
 // Defines what to do when subject ID is changed
