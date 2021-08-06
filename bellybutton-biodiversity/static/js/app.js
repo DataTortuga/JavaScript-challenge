@@ -14,7 +14,7 @@ function init() {
         for(index in data.samples) {
             console.log(index)
             select = d3.select('#selDataset')
-            select.append('option').text('940')
+            select.append('option').text(index)
             //select.options[select.options.length] = new Option(data.samples['id'][index], index);
         }
 
