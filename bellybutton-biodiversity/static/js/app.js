@@ -3,14 +3,17 @@ var select = d3.select('#selDataset')
 
 // Function updates Demographic info panel
 function update_panel(index, data) {
+
     var sample_panel = d3.select('#sample-metadata')
-    console.log(sample_panel.select('li'))
-    sample_panel.selectAll('li').remove()
-    sample_panel.append('ul').append('li').text('ID: ' + data.metadata[index].id);
-    sample_panel.append('ul').append('li').text('Ethnicity: ' + data.metadata[index].ethnicity);
-    sample_panel.append('ul').append('li').text('Gender: ' + data.metadata[index].gender);
-    sample_panel.append('ul').append('li').text('Age: ' + data.metadata[index].age);
-    sample_panel.append('ul').append('li').text('Location: ' + data.metadata[index].location);
+    sample_panel.selectAll('ul').remove()
+    sample_panel.append('ul')
+
+    var panel_list = sample_panel.select('ul')
+    panel_list.append('li').text('ID: ' + data.metadata[index].id);
+    panel_list.append('li').text('Ethnicity: ' + data.metadata[index].ethnicity);
+    panel_list.append('li').text('Gender: ' + data.metadata[index].gender);
+    panel_list.append('li').text('Age: ' + data.metadata[index].age);
+    panel_list  .append('li').text('Location: ' + data.metadata[index].location);
 }
 
 // Defines what to do when subject ID is changed
