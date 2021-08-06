@@ -15,14 +15,8 @@ function init() {
             console.log(data.samples[index].id)
             select = d3.select('#selDataset')
             select.append('option').text(data.samples[index].id)
-            //select.options[select.options.length] = new Option(data.samples['id'][index], index);
         }
 
-        // var drop_down = d3.select('#selDataset')
-        // var dd_data = drop_down.onchange
-        // console.log(dd_data)
-
-        // drop_down.onchange
 
     })
     trace = {
