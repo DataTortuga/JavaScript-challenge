@@ -14,11 +14,11 @@ function init() {
             select.append('option').text(data.samples[index].id)
         }
 
-        sample_panel.append('h4').text('ID: ' + data.metadata[0].id)
-        sample_panel.append('h4').text('Ethnicity: ' + data.metadata[0].ethnicity)
-        sample_panel.append('h4').text('Gender: ' + data.metadata[0].gender)
-        sample_panel.append('h4').text('Age: ' + data.metadata[0].age)
-        sample_panel.append('h4').text('Location: ' + data.metadata[0].location)
+        sample_panel.append('ul').append('li').text('ID: ' + data.metadata[0].id)
+        sample_panel.append('ul').append('li').text('Ethnicity: ' + data.metadata[0].ethnicity)
+        sample_panel.append('ul').append('li').text('Gender: ' + data.metadata[0].gender)
+        sample_panel.append('ul').append('li').text('Age: ' + data.metadata[0].age)
+        sample_panel.append('ul').append('li').text('Location: ' + data.metadata[0].location)
 
 
 
