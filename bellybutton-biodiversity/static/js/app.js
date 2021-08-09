@@ -1,21 +1,6 @@
 const data_loc = '../samples.json';
 var select = d3.select('#selDataset')
 
-// Function sorts top 10 OTUs for a given sample id subject
-// function sort10(sample_values) {
-//     for (let i = 0;  i < 10; i++) {
-//         var temp_array = [];
-//         var ind_array = [];
-//         var a = 200;
-        
-//         for (let j = 0; j < sample_values.length; j++) {
-//             //console.log(Number(sample_values[j]))
-//             if ((Number(sample_values[j]) > Number(sample_values[j+1])) && (Number(sample_values[j]) < a)) {temp_array.push(sample_values[j]); a = sample_values[j]; ind_array.push(j)}
-//         }
-
-//     }
-//     return ind_array;
-// }
 
 // Function updates Demographic info panel when subject id is changed
 function update_panel(index, data) {
@@ -34,36 +19,51 @@ function update_panel(index, data) {
 
 // Function updates plotly graph when subject id is changed
 function update_plot(index, data) {
-    //bar = d3.select('#bar').text('Hello')
-
-    //odu = sort10(data.samples[index].sample_values)
-    //odu = data.samples[index].sample_values.sort( function(a, b){return b - a}).slice(0, 10)
+ 
     otu_value = data.samples[index].sample_values.slice(0, 10);
     otu_id = data.samples[index].otu_ids.slice(0,10);
     otu_label = data.samples[index].otu_labels.slice(0,10);
 
-    // var ind_array = []
-    // for (let i = 0; i < odu.length; i++) {
-    //     for (let j = 0; j < data.samples[index].sample_values.length; j++) {
-    //         if (odu[i] == data.samples[index].sample_values[j]) {ind_array.push(j); break;}
-    //     }
-    // }
-
-    // console.log(ind_array)
-    // console.log(data.samples[index].sample_values)
+    otu_id1 = [];
+    for (let i = 0; i < otu_id.length; i++) {
+        otu_id1.push('OTU_ID: ' + otu_id[i])
+    }
 
     let trace1 = {
         x: otu_value,
-        y: otu_id
-      };
+        y: otu_id1,
+        text: otu_label,
+        type: 'bar',
+        orientation: 'h'
+    };
       
-      let data1 = [trace1];
+    otu_value = data.samples[index].sample_values;
+    otu_id = data.samples[index].otu_ids;
+    otu_label = data.samples[index].otu_labels;
+
+    let trace2 = {
+        x: otu_id,
+        y: otu_value,
+        mode: 'markers',
+        text: otu_label,
+        marker: {
+        size: otu_value,
+        color: otu_id
+        }
+    };
+
+    let data1 = [trace1];
+    let data2 = [trace2];
       
-      let layout = {
-        title: "Top 10 OTUs Found!"
-      };
+    let layout = {
+        title: "Belly Button Creatures",
+        showgrid: true,
+        showticklabels: true,
+        showline: true
+    };
       
-      Plotly.newPlot("bar", data1, layout);
+    Plotly.newPlot("bar", data1, layout);
+    Plotly.newPlot("bubble", data2, layout);
 }
 
 // Defines what to do when subject ID is changed
