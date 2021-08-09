@@ -1,5 +1,4 @@
-const data_loc = '../samples.json';
-var select = d3.select('#selDataset')
+const data_loc = '../../samples.json';
 
 
 // Function updates Demographic info panel when subject id is changed
@@ -79,6 +78,7 @@ function optionChanged(sam_id) {
 function init() {
     d3.json(data_loc).then(function (data) {
         console.log(data)
+        var select = d3.select('#selDataset')
         for(index in data.samples) {
             select.append('option').text(data.samples[index].id)
         }
