@@ -1,4 +1,4 @@
-const data_loc = '../../samples.json';
+const data_loc = 'samples.json';
 
 
 // Function updates Demographic info panel when subject id is changed
